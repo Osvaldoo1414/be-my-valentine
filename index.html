@@ -104,11 +104,19 @@
       color:var(--pink);
       border:1px solid rgba(255,77,136,.4);
       position:relative;
-      transform: translate(0,0);
     }
 
     .no:hover{
-      transform: translate(0,0) scale(1.02);
+      transform: scale(1.02);
+    }
+
+    /* 👇 Firma visible */
+    .from{
+      margin-top:14px;
+      font-style:italic;
+      color:#a7375c;
+      opacity:0.9;
+      font-size:14px;
     }
 
     .modal{
@@ -127,24 +135,12 @@
       padding: 22px;
       box-shadow: var(--shadow);
       text-align:center;
-      position:relative;
-      overflow:hidden;
     }
 
     .box h2{
       color:var(--pink);
       font-size:28px;
       margin-bottom:8px;
-    }
-
-    .box p{
-      margin-bottom:8px;
-    }
-
-    .signature{
-      margin-top:10px;
-      font-style:italic;
-      opacity:0.85;
     }
 
     .close{
@@ -154,7 +150,7 @@
       border-radius:14px;
       font-weight:700;
       box-shadow:none;
-      margin-top:10px;
+      margin-top:12px;
     }
   </style>
 </head>
@@ -163,14 +159,18 @@
   <div class="hearts"></div>
 
   <main class="card">
-    <div class="badge">🌹 Mensaje secreto para Rosa 🌹</div>
+    <!-- 🔁 CAMBIO AQUÍ -->
+    <div class="badge">🌹 Pregunta para Rosa 🌹</div>
 
     <h1>¿Quieres ser mi Valentine? 💘</h1>
 
-    <div class="row" id="buttons">
+    <div class="row">
       <button class="yes" id="yesBtn">SÍ 💞</button>
       <button class="no" id="noBtn">No 😭</button>
     </div>
+
+    <!-- ✅ FIRMA CLARA -->
+    <div class="from">De Osvaldo para Rosa 🌹</div>
   </main>
 
   <section class="modal" id="modal">
@@ -181,8 +181,6 @@
         Gracias por ser tú 💖 nunca dudes de lo especial que eres.  
         Nunca cambies por nada ni por nadie en el mundo 💖 &lt;3
       </p>
-
-      <p class="signature">— Osvaldo, para Rosa 🌹</p>
 
       <button class="close" id="closeBtn">Cerrar</button>
     </div>
