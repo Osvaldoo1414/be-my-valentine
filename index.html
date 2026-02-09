@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Be My Valentine 🌹</title>
+
   <style>
     :root{
       --bg1:#ffe6f0;
@@ -14,7 +15,12 @@
       --card:#ffffffcc;
       --shadow: 0 20px 60px rgba(0,0,0,.15);
     }
-    *{box-sizing:border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;}
+
+    *{
+      box-sizing:border-box;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+
     body{
       margin:0;
       min-height:100vh;
@@ -24,15 +30,19 @@
       overflow:hidden;
       color:var(--text);
     }
+
     .hearts{
-      position:fixed; inset:0; pointer-events:none; opacity:.8;
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.8;
       background:
         radial-gradient(circle at 10% 20%, rgba(255,77,136,.18) 0 10px, transparent 11px),
         radial-gradient(circle at 80% 30%, rgba(255,77,136,.14) 0 12px, transparent 13px),
         radial-gradient(circle at 60% 80%, rgba(255,119,168,.16) 0 14px, transparent 15px),
         radial-gradient(circle at 30% 70%, rgba(255,77,136,.10) 0 18px, transparent 19px);
-      filter: blur(0.2px);
     }
+
     .card{
       width:min(560px, 92vw);
       background:var(--card);
@@ -42,65 +52,74 @@
       border-radius: 28px;
       padding: 28px 22px;
       text-align:center;
-      position:relative;
     }
+
     .badge{
       display:inline-flex;
-      gap:10px;
       align-items:center;
+      gap:10px;
       background: linear-gradient(90deg, rgba(255,77,136,.16), rgba(255,119,168,.14));
       border: 1px solid rgba(255,77,136,.25);
-      padding: 10px 14px;
+      padding: 10px 16px;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight:600;
     }
+
     h1{
       margin:14px 0 8px;
       font-size: clamp(28px, 4vw, 40px);
-      line-height:1.1;
     }
+
     .row{
       display:flex;
       justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top: 14px;
-      position:relative;
-      min-height:58px;
+      gap:14px;
+      margin-top:16px;
+      min-height:70px;
     }
+
     button{
       border:none;
       border-radius: 16px;
-      padding: 14px 18px;
+      padding: 14px 20px;
       font-size: 16px;
-      font-weight: 750;
+      font-weight:750;
       cursor:pointer;
-      transition: transform .12s ease, box-shadow .12s ease;
       box-shadow: 0 12px 26px rgba(255,77,136,.18);
+      transition: transform .15s ease;
       user-select:none;
     }
+
     .yes{
       background: linear-gradient(135deg, var(--pink), var(--pink2));
       color:white;
     }
-    .yes:hover{ transform: translateY(-2px) scale(1.02); }
+
+    .yes:hover{
+      transform: translateY(-2px) scale(1.02);
+    }
+
     .no{
       background:white;
       color:var(--pink);
-      border: 1px solid rgba(255,77,136,.4);
-      position:absolute; /* lo movemos con JS */
-      left: 50%;
-      transform: translateX(-50%);
+      border:1px solid rgba(255,77,136,.4);
+      position:relative;
+      transform: translate(0,0);
     }
-    .no:hover{ transform: translateX(-50%) scale(1.02); }
+
+    .no:hover{
+      transform: translate(0,0) scale(1.02);
+    }
 
     .modal{
-      position:fixed; inset:0;
+      position:fixed;
+      inset:0;
       display:none;
       place-items:center;
       background: rgba(0,0,0,.35);
-      padding: 18px;
+      padding:18px;
     }
+
     .modal .box{
       width:min(520px, 92vw);
       background:white;
@@ -108,37 +127,36 @@
       padding: 22px;
       box-shadow: var(--shadow);
       text-align:center;
-      border: 1px solid rgba(255,77,136,.22);
       position:relative;
       overflow:hidden;
     }
+
     .box h2{
-      margin: 6px 0 8px;
-      font-size: 28px;
-      color: var(--pink);
+      color:var(--pink);
+      font-size:28px;
+      margin-bottom:8px;
     }
-    .box p{ margin: 8px auto 14px; }
+
+    .box p{
+      margin-bottom:14px;
+    }
+
     .close{
-      background: #111;
-      color: white;
+      background:#111;
+      color:white;
+      padding:10px 16px;
+      border-radius:14px;
+      font-weight:700;
       box-shadow:none;
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-weight: 700;
-    }
-    .confetti{
-      position:absolute;
-      inset:-20px;
-      pointer-events:none;
-      opacity:.9;
     }
   </style>
 </head>
+
 <body>
   <div class="hearts"></div>
 
-  <main class="card" id="card">
-    <div class="badge"> <span> 🌹 Mensaje secreto para Rosa 🌹</span></div>
+  <main class="card">
+    <div class="badge">🌹 Mensaje secreto para Rosa 🌹</div>
 
     <h1>¿Quieres ser mi Valentine? 💘</h1>
 
@@ -150,18 +168,8 @@
 
   <section class="modal" id="modal">
     <div class="box">
-      <svg class="confetti" viewBox="0 0 400 260" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="g" x1="0" x2="1">
-            <stop offset="0" stop-color="#ff4d88" stop-opacity="0.35"/>
-            <stop offset="1" stop-color="#ff77a8" stop-opacity="0.25"/>
-          </linearGradient>
-        </defs>
-        <rect x="0" y="0" width="400" height="260" fill="url(#g)"/>
-      </svg>
-
       <h2>YAAAYYYYY 💖</h2>
-      <p id="successText"> Gracias por ser tú siempre 💖! nunca cambies por nada ni por nadie en el mundo <3 </p>
+      <p>Gracias por ser tú siempre 💖! nunca cambies por nada ni por nadie en el mundo &lt;3</p>
       <button class="close" id="closeBtn">Cerrar</button>
     </div>
   </section>
@@ -169,76 +177,30 @@
   <script>
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
-    const row = document.getElementById("buttons");
     const modal = document.getElementById("modal");
     const closeBtn = document.getElementById("closeBtn");
 
-    // Poner "No" en el centro al inicio
-    function centerNo(){
-      const rowRect = row.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
-      const left = (rowRect.width - btnRect.width) / 2;
-      noBtn.style.left = `${left}px`;
-      noBtn.style.top = `0px`;
-    }
-    window.addEventListener("load", centerNo);
-    window.addEventListener("resize", centerNo);
-
-    // Hacer que el "No" se escape 😼
     function moveNo(){
-      const rowRect = row.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
+      const maxX = 140;
+      const maxY = 60;
 
-      const padding = 6;
-      const maxX = Math.max(padding, rowRect.width - btnRect.width - padding);
-      const maxY = 18;
+      const x = (Math.random() * maxX * 2) - maxX;
+      const y = (Math.random() * maxY * 2) - maxY;
 
-      const x = Math.random() * maxX;
-      const y = (Math.random() * maxY) - (maxY/2);
-
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     noBtn.addEventListener("mouseenter", moveNo);
-    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); }, {passive:false});
+    noBtn.addEventListener("touchstart", e => { e.preventDefault(); moveNo(); }, {passive:false});
     noBtn.addEventListener("click", moveNo);
 
-    // Al darle YES
     yesBtn.addEventListener("click", () => {
       modal.style.display = "grid";
-      burstHearts();
     });
 
     closeBtn.addEventListener("click", () => {
       modal.style.display = "none";
     });
-
-    // mini animación de corazones
-    function burstHearts(){
-      for(let i=0;i<18;i++){
-        const el = document.createElement("div");
-        el.textContent = Math.random() > 0.5 ? "💖" : "💘";
-        el.style.position = "fixed";
-        el.style.left = (window.innerWidth/2 + (Math.random()*120-60))+"px";
-        el.style.top = (window.innerHeight/2 + (Math.random()*60-30))+"px";
-        el.style.fontSize = (16 + Math.random()*18)+"px";
-        el.style.pointerEvents = "none";
-        el.style.transform = "translate(-50%,-50%)";
-        el.style.transition = "transform 900ms ease, opacity 900ms ease";
-        el.style.opacity = "1";
-        document.body.appendChild(el);
-
-        requestAnimationFrame(() => {
-          const dx = (Math.random()*260 - 130);
-          const dy = (Math.random()*260 - 170);
-          el.style.transform = `translate(${dx}px, ${dy}px) scale(${0.7 + Math.random()*1.1})`;
-          el.style.opacity = "0";
-        });
-
-        setTimeout(()=> el.remove(), 950);
-      }
-    }
   </script>
 </body>
 </html>
